@@ -20,11 +20,16 @@ class MainViewController: UIViewController {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.minimumInteritemSpacing = 1
         flowLayout.minimumLineSpacing = 1
+        flowLayout.headerReferenceSize = CGSize(width: 50, height: 50)
+        flowLayout.footerReferenceSize = CGSize(width: 50, height: 50)
+            
         collectionNode = ASCollectionNode(frame: self.view.bounds, collectionViewLayout: flowLayout)
         collectionNode.delegate = self
         collectionNode.dataSource = self
         collectionNode.reloadData()
         collectionNode.allowsMultipleSelection = true
+        self.collectionNode.registerSupplementaryNode(ofKind: UICollectionElementKindSectionHeader)
+        self.collectionNode.registerSupplementaryNode(ofKind: UICollectionElementKindSectionFooter)
         view.addSubnode(collectionNode)
     }
 }
@@ -47,6 +52,17 @@ extension MainViewController: ASCollectionDelegate, ASCollectionDataSource{
     
     func numberOfSections(in collectionNode: ASCollectionNode) -> Int {
         return 3
+    }
+    
+    func collectionNode(_ collectionNode: ASCollectionNode, nodeForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> ASCellNode {
+        
+        let node = ASCellNode()
+        if kind == UICollectionElementKindSectionHeader {
+            node.backgroundColor = .red
+        } else {
+            node.backgroundColor = .blue
+        }
+        return node
     }
 }
 

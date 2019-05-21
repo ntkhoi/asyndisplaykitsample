@@ -21,6 +21,7 @@ class LanguageNodeCell: ASTextCellNode {
         super.init()
         borderColor = UIColor.black.cgColor
         borderWidth = 1
+        cornerRadius = 4
     }
     
     override init(attributes textAttributes: [AnyHashable : Any] = [:], insets textInsets: UIEdgeInsets) {
