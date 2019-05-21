@@ -1,3 +1,3 @@
 # asyndisplaykitsample
-Create some demo and testing this framework 
+Create some demos and testing this framework 
 http://texturegroup.org
